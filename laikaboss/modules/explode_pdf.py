@@ -37,6 +37,12 @@ class EXPLODE_PDF(SI_MODULE):
                 for objid in xref.get_objids():
                     try:
                         obj = pdfDoc.getobj(objid)
+                        if isinstance(obj, dict):
+                            for (key,val) in obj.iteritems():
+                                if key in ['AA','OpenAction']:
+                                    scanObject.addFlag('pdf:nfo:auto_action')
+                                elif key in ['JS','Javascript']:
+                                    scanObject.addFlag('pdf:nfo:js_embedded')
                         if isinstance(obj, PDFStream):
                             moduleResult.append(ModuleObject(buffer=obj.get_data(), externalVars=ExternalVars(filename='e_pdf_stream_%s' % objid)))
 
