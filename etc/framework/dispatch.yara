@@ -206,6 +206,7 @@ rule type_is_rtf
 rule type_is_pdf
 {
     meta:
+        scan_modules = "EXPLODE_PDF"
         file_type = "pdf"
     strings:
         $pdf1 = { 25 50 44 46 2d ?? 2e } // %PDF-.(dot)
