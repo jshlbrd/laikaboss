@@ -61,6 +61,14 @@ rule meta_hash
         true
 }
 
+rule meta_histogram
+{
+    meta:
+        scan_modules = "META_HISTOGRAM"
+    condition:
+        true
+}
+
 /*_________________________________________________________________________*/
 
 /*-------------------------Certificate Grouping----------------------------*/
